@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block nav %}
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="{% url 'home' %}"><img src="{% static 'image/scope-india-logo-bird.png' %}" alt="" height="40px"></a>
+    </div>
+    
+    <a href="{% url 'home' %}" >Home</a>
+    <a href="{% url 'contact' %}" class="active">Contact</a>
+    <a href="{% url 'about' %}">About</a>
+    
+    <!-- Right-aligned links -->
+    <div class="topnav-right">
+      <a href="{% url 'registration' %}">Registration</a>
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'dashboard' %}" >Dashboard</a> </div>
+    
+  </div>
+{% endblock %}
+{% block body %}
+<div style="border: 1px solid rgb(195, 195, 195); width: 400px; margin: auto; background-color: white; border-radius: 8px; height: 300px;margin-top: 50px;" >
+  <h1 class="text-center">Contact us</h1>
+  <form action="" method="post" class="m-auto w-75">
+    {% csrf_token %}
+    {% for i in messages %}
+       <span style="color: rgb(17, 0, 255);">{{i}}</span>
+    {% endfor %}
+    {{form.as_p}}
+    <button class="btn btn-primary m-auto" style="display: block;">Call Me</button>
+  </form>
+</div>
+{% endblock %}

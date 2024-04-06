@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block body %}
+<a href="{% url 'adminpage' %}"><button class="btn btn-dark">Back</button></a>
+<h1 class="text-center" style="color: white;">All details</h1>
+        <h4>First name: {{i.first_name}}</h4>
+        <h4>Last name: {{i.last_name}}</h4>
+        <h4>Gender: {{i.gender}}</h4>
+        <h4>Date of birth: {{i.date_of_birth}}</h4>
+        <h4>Email: {{i.email}}</h4>
+        <h4>Phone number: {{i.phone_number}}</h4>
+        <h4>Country: {{i.country}}</h4>
+        <h4>State: {{i.state}}</h4>
+        <h4>City: {{i.city}}</h4>
+        <h4>Hobbies: {{i.hobbies}}</h4>
+        <h4>Avatar: <img src="{{ i.upload_avatar.url }}" alt="" height="50px"> </h4>
+        <a href="{% url 'adminedit' i.id %}"><button class="btn btn-dark">Edit</button></a> 
+{% endblock %}
+

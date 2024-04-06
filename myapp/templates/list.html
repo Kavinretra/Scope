@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+{% block body %}
+<h1 class="text-center" style="color: white;">Admin page</h1>
+<div style="margin-left: 1200px;">
+<a href="{% url 'logout' %}"><button class="btn btn-dark">Logout</button></a>
+</div>
+<table cellpadding="5" style="background-color: white; margin: auto;">
+    <tr>
+        <th>Id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Modify User</th>
+    </tr>
+    
+        {% for i in details %}
+        <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{i.first_name}}</td>
+        <td>{{i.last_name}}</td>
+        <td>{{i.email}}</td>
+        <td><a href="{% url 'displayall' i.id %}"><button class="btn btn-dark">View all</button></a>
+            <a href="{% url 'adminedit' i.id %}"><button class="btn btn-dark">Edit</button></a> 
+            
+            {% if i.is_active == 1 %}
+                <a href="{% url 'deactivate' i.id%}"><button class="btn btn-dark">Deactivate</button></a>
+            {% else %}
+
+                <a href="{% url 'activate' i.id%}"><button class="btn btn-dark">Activate</button></a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    
+</table>
+<div class="text-center">
+<a href="{% url 'addetails' %}"><button class="btn btn-success">Add new details</button></a>
+</div>
+
+{% endblock %}
+

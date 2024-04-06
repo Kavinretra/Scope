@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block body %}
+<a href="{% url 'dashboard' %}"><button class="btn btn-dark">Back</button></a>
+<div class="text-center" ><h1 style="color: rgb(255, 255, 255);">Personal details</h1></div>
+<div style="margin-left: 20px;">
+<h4>Name: {{details.first_name}} {{details.last_name}}</h4>
+<h4>Gender: {{details.gender}}</h4>
+<h4>Date of birth: {{details.date_of_birth}}</h4>
+<h4>Email: {{details.email}}</h4>
+<h4>Phone: {{details.phone_number}}</h4>
+<h4>Country: {{details.country}}</h4>
+<h4>State: {{details.state}}</h4>
+<h4>City: {{details.city}}</h4>
+<h4>Hobby: {{details.hobbies}}</h4>
+<h4>Avatar: <img src="{{details.upload_avatar.url}}" alt="" height="50px"></h4>
+<a href="{% url 'editprofile' %}"><button class="btn btn-dark">Edit details</button></a>
+</div>
+{% endblock %}

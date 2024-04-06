@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+<div style="border: 1px solid rgb(195, 195, 195); width: 900px; margin: auto; background-color: white; border-radius: 8px;" >
+  <h1 class="text-center">Edit details</h1>
+<form action="" method="post" enctype="multipart/form-data" class="m-auto w-75" >
+  {% csrf_token %}
+  {% for i in messages %}
+       <span style="color: red;">{{i}}</span>
+    {% endfor %}
+<div class="row">
+ 
+ {% for i in form %}
+  <div class="col-6">
+    {% if i.name == 'upload_avatar' %}
+    {{i.label_tag}}
+    {{i}}
+    Uploaded Avatar: <img src="{{ i.value.url }}" alt="" height="50px">
+    
+    {% else %}
+    {{i.label_tag}}
+    {{i}}<br>
+    {% endif %}
+  </div>
+ {% endfor %}
+</div>
+<div class="">
+
+  <button class="btn btn-primary " style="margin:auto;width: 100px;display: block;">submit</button>
+</div>
+</form>
+</div>
+
+    {% endblock %}
